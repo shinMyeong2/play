@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            * {
+                padding: 0;
+                margin: 0;
+            }
+
+            #wrap {
+                width: 70%;
+                height: 400px;
+                margin: 0 auto;
+                border: 3px solid black;
+            }
+            #wrap div {
+                width: 33.33333%;
+                height: 400px;
+                display: inline-block;
+            }
+            #wrap div:first-child {
+                margin-right: 33.33334%;
+            }
+        </style>
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="wrap">
+            <div id="firstColor"></div><div id="secondColor"></div>
+        </div>
+
+        <script>
+            const wrap = document.querySelector("#wrap");
+            const firstColor = document.querySelector("#firstColor");
+            const secondColor = document.querySelector("#secondColor");
+
+            firstColor.style.backgroundColor = "rgb(0, 128, 0)";
+            secondColor.style.backgroundColor = "rgb(0, 128, 0)";
+
+            function changeColor() {
+                if (firstColor.style.backgroundColor === "rgb(0, 128, 0)") {
+                    if (secondColor.style.backgroundColor === "rgb(0, 128, 0)") {
+                        firstColor.style.backgroundColor = "rgb(255, 165, 0)";
+                    } else if (secondColor.style.backgroundColor === "rgb(255, 165, 0)") {
+                        secondColor.style.backgroundColor = "rgb(255, 0, 0)";
+                    } else if (secondColor.style.backgroundColor === "rgb(255, 0, 0)") {
+                        firstColor.style.backgroundColor = "rgb(0, 0, 255)";
+                    } else {
+                        alert("error1");
+                    }
+                } else if (firstColor.style.backgroundColor === "rgb(255, 165, 0)") {
+                    firstColor.style.backgroundColor = "rgb(0, 128, 0)";
+                    secondColor.style.backgroundColor = "rgb(255, 165, 0)";
+                } else if (firstColor.style.backgroundColor === "rgb(0, 0, 255)") {
+                    firstColor.style.backgroundColor = "rgb(0, 128, 0)";
+                    secondColor.style.backgroundColor = "rgb(0, 128, 0)";
+                } else {
+                    alert("error2");
+                }
+            }
+
+            wrap.addEventListener("click", changeColor);
+        </script>
+    </body>
+</html>
